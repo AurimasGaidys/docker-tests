@@ -1,0 +1,42 @@
+version: '1'
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672" 
+      - "8080:15672"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:15672"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  service1:
+    image: node-app:1.0.2
+    depends_on:
+      rabbitmq:
+        condition: service_started
+    ports:
+      - "3000:3000"
+    volumes:
+      - shared:/app/shared
+  service2:
+    image: node-app-2:1.0
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    ports:
+      - "3030:3030"
+    volumes:
+      - shared:/app/shared
+  service3:
+    image: image-analyzer:1.0
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    volumes:
+      - shared:/app/shared
+
+volumes:
+  shared:
+
+  

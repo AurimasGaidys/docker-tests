@@ -1,0 +1,12 @@
+{
+    "name": "my_app",
+    "version": "1.0.0",
+    "description": "My app",
+    "dependencies": {
+        "amqplib": "^0.10.3",
+        "body-parser": "^1.20.2",
+        "cors": "^2.8.5",
+        "express": "^4.17.1",
+        "pureimage": "^0.4.13"
+    }
+}

@@ -1,0 +1,10 @@
+{
+    "name": "service2",
+    "version": "1.0.0",
+    "description": "My app",
+    "dependencies": {
+        "amqplib": "^0.10.3",
+        "cors": "^2.8.5",
+        "express": "^4.17.1"
+    }
+}
